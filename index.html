@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #imageBox{
+            margin: auto;
+        }
+
+        #img{
+            box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+            width: 35%;
+            background-color: white;
+            height: 400px;
+            border-radius: 5px;
+            display: block;
+            margin: auto;
+
+        }
+        #box>button{
+            padding: 5px;
+            height: 40px;
+            width: 200px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            background-color: black;
+            margin-top: 40px;
+        }
+
+        #food{
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            padding: 5px;
+            width: 200px;
+
+        }
+
+        #container{
+            width: 100%;
+            height: 600px;
+            padding: 10px;
+            background-color: #ffbc0b;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        <div id="box">
+            <button onclick="order_food()">Order Food</button>
+            <h1 id="showName">Item order id</h1>
+        </div>
+
+        <br>
+        <select id="food">
+            <option>McVeggie Burger</option>
+            <option>Big Spicy Paneer Burger</option>
+            <option>Big Spicy Paneer Wrap</option>
+            <option>McChicken Burger</option>
+            <option>McSpicy Chicken Burger</option>
+        </select>
+        <br>
+        <br>
+        <div id="imageBox"></div>
+    </div>
+    <h1>Food Menu</h1>
+    <input type="checkbox" id="food">
+    <label>McVeggie Burger</label>
+    <br>
+    <input type="checkbox" id="food">
+    <label>Big Spicy Paneer Burger</label>
+    <br>
+    <input type="checkbox" id="food">
+    <label>Big Spicy Paneer Wrap</label>
+    <br>
+    <input type="checkbox" id="food">
+    <label>McChicken Burger</label>
+    <br>
+    <input type="checkbox" id="food">
+    <label>McSpicy Chicken Burger</label>
+
+
+
+
+</body>
+</html>
+
+<script>
+
+    function status() {
+        return true;
+    }
+
+    function order_food() {
+        let order = document.getElementById("food").value;
+        let my_promise = new Promise(function (resolve, reject) {
+        let S = status();
+
+        let  time = Math.random() //0.1 to 0.9 * 10000
+        console.log(time);
+        if (S === true) {
+            setTimeout(function () {
+                resolve(order);
+            }, time);
+           
+
+        }else{
+            reject("Sorry We can't deliver this item");
+        }
+    });
+
+    my_promise.then(function (res) {
+        console.log(`Your ${res} is ready`)
+    });
+
+    
+let showName = document.getElementById("showName");
+let img = document.createElement("img")
+img.setAttribute("id", "img");
+
+let imageBox = document.getElementById("imageBox");
+imageBox.innerText = null;
+
+if(order === "McVeggie Burger"){
+    showName.innerText = "09349534598McVeggieBurger";
+    img.src = "https://mcdonaldsblog.in/wp-content/uploads/2021/08/McVeggie-burger.jpg";
+    showName.append(img);
+    imageBox.append(img);
+}
+
+else if(order === "Big Spicy Paneer Burger"){
+    showName.innerText ="9998459438593McSpicyPaneerBurger";
+    img.src = "https://www.calcuttaweb.com/image/cache/data/calcutta/macd_veggie_burger-1600x1200.jpg";
+    showName.append(img);
+    imageBox.append(img);
+}
+
+else if(order === "Big Spicy Paneer Wrap"){
+    showName.innerText = "998345983489BigSpicyPaneerWrap";
+    img.src = "https://i.ytimg.com/vi/o7pvWj5aSHA/maxresdefault.jpg"
+    showName.append(img);
+    imageBox.append(img);
+}
+
+else if(order === "McChicken Burger"){
+    showName.innerText = "00938394839McChickenBurger";
+    img.src = "https://mcdonaldsblog.in/wp-content/uploads/2021/09/mcChicken-burger.jpg";
+    showName.append(img);
+    imageBox.append(img);
+}
+
+else if(order === "McSpicy Chicken Burger"){
+    showName.innerText = "449539534950McSpicyChickenBurger";
+    img.src = "https://metro.co.uk/wp-content/uploads/2021/07/SEC_86697653.jpg?quality=90&strip=all";
+    showName.append(img);
+    imageBox.append(img);
+   }
+
+
+}
+
+</script>
